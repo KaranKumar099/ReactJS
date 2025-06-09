@@ -11,7 +11,7 @@ function TodoItem({todo}) {
         setIsEditable(false);
     }
     return (
-        <div className='w-xl p-5 rounded bg-yellow-300 flex justify-between items-center'>
+        <div className={`item w-xl p-5 rounded flex justify-between items-center ${todo.isCompleted ? "bg-green-300" : "bg-yellow-200"}`}>
             <div className='mr-4'>
                 <input type="checkbox"
                     className="cursor-pointer"

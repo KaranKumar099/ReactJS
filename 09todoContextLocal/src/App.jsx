@@ -15,13 +15,14 @@ function App() {
     setTodos((prevTodo)=>(prevTodo.filter((curTodo)=>curTodo.id!==id)))
   }
   const toggleComplete = (id) => {
-    setTodos((prevTodo)=>(prevTodo.map((curTodo)=>(curTodo.id===id ? {...curTodo, isCompleted: !curTodo.isCompleted} : curTodo))))
+    setTodos((prevTodo)=>prevTodo.map((curTodo)=>curTodo.id===id ? {...curTodo, isCompleted: !curTodo.isCompleted} : curTodo))
   }
 
   useEffect(()=>{
     let todos=JSON.parse(localStorage.getItem("todos"));
     if(todos && todos.length>0){
       setTodos(todos);
+      console.log(todos);
     }
   },[])
   useEffect(()=>{
@@ -38,9 +39,7 @@ function App() {
           </div>
           <div>
               {todos.map((todo) => (
-                <div key={todo.id}
-                className='w-full mb-4'
-                >
+                <div key={todo.id} className="w-full mb-4">
                   <TodoItem todo={todo} />
                 </div>
               ))}
